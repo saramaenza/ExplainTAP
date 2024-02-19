@@ -1,0 +1,1988 @@
+{
+    "action": [
+      {
+        "realName": "ChangeApplianceState",
+        "nodes": [
+          {
+            "realName": "Home",
+            "attributes": [
+              {
+                "realName": "AllLight",
+                "possibleValues": [
+                  {
+                    "value": "On",
+                    "hasPositiveEffectOnGoals": [
+                      {
+                        "goal": "comfort",
+                        "description": "This device makes a more comfortable environment"
+                      },
+                      {
+                        "goal": "comfort",
+                        "description": "This device can make your daily tasks easier"
+                      },
+                      {
+                        "goal": "safety",
+                        "description": "This device can prevent accidents"
+                      },
+                      {
+                        "goal": "security",
+                        "description": "This device can deter criminals"
+                      }
+                    ],
+                    "hasNegativeEffectOnGoals": [
+                      {
+                        "goal": "energy saving",
+                        "description": "This device can consume a significant amount of energy"
+                      },
+                      {
+                        "goal": "well being",
+                        "description": "This device can negatively affect sleep quality"
+                      }
+                    ],
+                    "confidentlyIncreaseEnvironmentVariables": [
+                      "lighting"
+                    ],
+                    "confidentlyDecreaseEnvironmentVariables": [
+                      "darkening"
+                    ],
+                    "canIncreaseEnvironmentVariables": [],
+                    "canDecreaseEnvironmentVariables": []
+                  },
+                  {
+                    "value": "Off",
+                    "hasPositiveEffectOnGoals": [
+                      {
+                        "goal": "well being",
+                        "description": "This device can negatively affect sleep quality"
+                      },
+                      {
+                        "goal": "energy saving",
+                        "description": "This device can consume a significant amount of energy"
+                      }
+                    ],
+                    "hasNegativeEffectOnGoals": [
+                      {
+                        "goal": "comfort",
+                        "description": "This device can make your daily tasks easier"
+                      },
+                      {
+                        "goal": "safety",
+                        "description": "This device can prevent accidents"
+                      }
+                    ],
+                    "confidentlyIncreaseEnvironmentVariables": [
+                      "darkening"
+                    ],
+                    "confidentlyDecreaseEnvironmentVariables": [
+                      "lighting"
+                    ],
+                    "canIncreaseEnvironmentVariables": [],
+                    "canDecreaseEnvironmentVariables": []
+                  }
+                ],
+                "canActivate": [
+                  {
+                    "trigger": "lightLevel",
+                    "why": "Increase or decrease of the room lighting"
+                  }
+                ]
+              },
+              {
+                "realName": "AllWindow",
+                "possibleValues": [
+                  {
+                    "value": "Open",
+                    "hasPositiveEffectOnGoals": [
+                      {
+                        "goal": "safety",
+                        "description": "This window can prevent gas accumulation"
+                      },
+                      {
+                        "goal": "health",
+                        "description": "This window can improve air quality"
+                      },
+                      {
+                        "goal": "comfort",
+                        "description": "This window can regulates the internal temperature"
+                      },
+                      {
+                        "goal": "energy saving",
+                        "description": "This window can allow the temperature system to be switched off"
+                      }
+                    ],
+                    "hasNegativeEffectOnGoals": [
+                      {
+                        "goal": "well-being",
+                        "description": "This window can increases the noise from outside"
+                      },
+                      {
+                        "goal": "well-being",
+                        "description": "This window does not protect against weather events"
+                      },
+                      {
+                        "goal": "comfort",
+                        "description": "This window can make the room too cold or too hot"
+                      },
+                      {
+                        "goal": "security",
+                        "description": "This window can allows unauthorized access"
+                      },
+                      {
+                        "goal": "energy saving",
+                        "description": "This window can consume a significant amount of energy if temperature (heating or cooling) systems are on",
+                        "ifAction": [
+                          {
+                            "action": "HeatingSystem",
+                            "value": "On"
+                          },
+                          {
+                            "action": "CoolingSystem  ==> attualmente non c'è nel contesto",
+                            "value": "On"
+                          }
+                        ]
+                      }
+                    ],
+                    "confidentlyIncreaseEnvironmentVariables": [],
+                    "confidentlyDecreaseEnvironmentVariables": [],
+                    "canIncreaseEnvironmentVariables": [
+                      "noise",
+                      "temperature",
+                      "air humidity",
+                      "air quality"
+                    ],
+                    "canDecreaseEnvironmentVariables": [
+                      "quiet",
+                      "temperature",
+                      "air humidity"
+                    ]
+                  },
+                  {
+                    "value": "Close",
+                    "hasPositiveEffectOnGoals": [
+                      {
+                        "goal": "well-being",
+                        "description": "This window protects against weather events"
+                      },
+                      {
+                        "goal": "well-being",
+                        "description": "This window can increases the noise from outside"
+                      },
+                      {
+                        "goal": "comfort",
+                        "description": "This window can make a more stable internal temperature"
+                      },
+                      {
+                        "goal": "security",
+                        "description": "This window can allows unauthorized access"
+                      },
+                      {
+                        "goal": "energy saving",
+                        "description": "This window can consume a significant amount of energy if temperature systems are on"
+                      }
+                    ],
+                    "hasNegativeEffectOnGoals": [
+                      {
+                        "goal": "safety",
+                        "description": "This window can prevents gas accumulation"
+                      },
+                      {
+                        "goal": "health",
+                        "description": "This window can improve air quality"
+                      },
+                      {
+                        "goal": "comfort",
+                        "description": "This window can make the room too cold or too hot"
+                      }
+                    ],
+                    "confidentlyIncreaseEnvironmentVariables": [],
+                    "confidentlyDecreaseEnvironmentVariables": [],
+                    "canIncreaseEnvironmentVariables": [
+                      "quiet",
+                      "temperature",
+                      "air humidity"
+                    ],
+                    "canDecreaseEnvironmentVariables": [
+                      "noise",
+                      "temperature",
+                      "air humidity",
+                      "air quality"
+                    ]
+                  }
+                ],
+                "canActivate": [
+                  {
+                    "trigger": "temperature",
+                    "why": "Increase or decrease of the room temperature"
+                  },
+                  {
+                    "trigger": "humidity",
+                    "why": "Increase or decrease of the room humidity"
+                  },
+                  {
+                    "trigger": "noiseLevel",
+                    "why": "Increase or decrease of the noise level"
+                  },
+                  {
+                    "trigger": "securityIntrusion",
+                    "why": "Open window can allow unauthorized access"
+                  }
+                ]
+              },
+              {
+                "realName": "HeatingSystem",
+                "possibleValues": [
+                  {
+                    "value": "On",
+                    "hasPositiveEffectOnGoals": [
+                      {
+                        "goal": "well-being",
+                        "description": "This device can make a more comfortable environment in cold season"
+                      },
+                      {
+                        "goal": "comfort",
+                        "description": "This device can make a more comfortable room temperature in cold season"
+                      }
+                    ],
+                    "hasNegativeEffectOnGoals": [
+                      {
+                        "goal": "energy saving",
+                        "description": "This device can consume a significant amount of energy"
+                      },
+                      {
+                        "goal": "well-being",
+                        "description": "This device can make a too hot environment in hot season"
+                      },
+                      {
+                        "goal": "comfort",
+                        "description": "This device can make a inhospitable environment in hot season"
+                      }
+                    ],
+                    "confidentlyIncreaseEnvironmentVariables": [
+                      "temperature"
+                    ],
+                    "confidentlyDecreaseEnvironmentVariables": [],
+                    "canIncreaseEnvironmentVariables": [],
+                    "canDecreaseEnvironmentVariables": []
+                  },
+                  {
+                    "value": "Off",
+                    "hasPositiveEffectOnGoals": [
+                      {
+                        "goal": "energy saving",
+                        "description": "This device can consume a significant amount of energy"
+                      },
+                      {
+                        "goal": "well-being",
+                        "description": "This device can make a more comfortable environment in hot season"
+                      },
+                      {
+                        "goal": "comfort",
+                        "description": "This device can make a more comfortable room temperature in hot season"
+                      }
+                    ],
+                    "hasNegativeEffectOnGoals": [
+                      {
+                        "goal": "well-being",
+                        "description": "This device can make a too cold environment in cold season"
+                      },
+                      {
+                        "goal": "comfort",
+                        "description": "This device can make a inhospitable environment in cold season"
+                      }
+                    ],
+                    "confidentlyIncreaseEnvironmentVariables": [],
+                    "confidentlyDecreaseEnvironmentVariables": [
+                      "temperature"
+                    ],
+                    "canIncreaseEnvironmentVariables": [],
+                    "canDecreaseEnvironmentVariables": []
+                  }
+                ],
+                "canActivate": [
+                  {
+                    "trigger": "temperature",
+                    "why": "Increase or decrease of the room temperature"
+                  }
+                ]
+              },
+              {
+                "realName": "RobotVacuumCleaner",
+                "possibleValues": [
+                  {
+                    "value": "On",
+                    "hasPositiveEffectOnGoals": [
+                      {
+                        "goal": "health",
+                        "description": "This device can improve air quality thanks to clean and dust-free floors"
+                      },
+                      {
+                        "goal": "well-being",
+                        "description": "This device can make a clean and tidy environment"
+                      }
+                    ],
+                    "hasNegativeEffectOnGoals": [
+                      {
+                        "goal": "well-being",
+                        "description": "This device can make noise"
+                      },
+                      {
+                        "goal": "energy saving",
+                        "description": "This device can consume a significant amount of energy"
+                      }
+                    ],
+                    "confidentlyIncreaseEnvironmentVariables": [
+                      "cleaning",
+                      "noise"
+                    ],
+                    "confidentlyDecreaseEnvironmentVariables": [
+                      "quiet"
+                    ],
+                    "canIncreaseEnvironmentVariables": [],
+                    "canDecreaseEnvironmentVariables": []
+                  },
+                  {
+                    "value": "Off",
+                    "hasPositiveEffectOnGoals": [
+                      {
+                        "goal": "well-being",
+                        "description": "This device can make noise"
+                      }
+                    ],
+                    "hasNegativeEffectOnGoals": [
+                      {
+                        "goal": "energy saving",
+                        "description": "This device can consume a significant amount of energys"
+                      }
+                    ],
+                    "confidentlyIncreaseEnvironmentVariables": [
+                      "quiet"
+                    ],
+                    "confidentlyDecreaseEnvironmentVariables": [
+                      "cleaning",
+                      "noise"
+                    ],
+                    "canIncreaseEnvironmentVariables": [],
+                    "canDecreaseEnvironmentVariables": []
+                  }
+                ],
+                "canActivate": [
+                  {
+                    "trigger": "noiseLevel",
+                    "why": "Increase or decrease of the noise level"
+                  },
+                  {
+                    "trigger": "airQualityLevel ==> Attualmente non è nel contesto",
+                    "why": "Can increase the air quality level"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "realName": "Kitchen",
+            "attributes": [
+              {
+                "realName": "Light",
+                "possibleValues": [
+                  {
+                    "value": "On",
+                    "hasPositiveEffectOnGoals": [
+                      {
+                        "goal": "comfort",
+                        "description": "This device makes a more comfortable environment"
+                      },
+                      {
+                        "goal": "comfort",
+                        "description": "This device can make your daily tasks easier"
+                      },
+                      {
+                        "goal": "safety",
+                        "description": "This device can prevent accidents"
+                      },
+                      {
+                        "goal": "security",
+                        "description": "This device can deter criminals"
+                      }
+                    ],
+                    "hasNegativeEffectOnGoals": [
+                      {
+                        "goal": "energy saving",
+                        "description": "This device can consume a significant amount of energy"
+                      }
+                    ],
+                    "confidentlyIncreaseEnvironmentVariables": [
+                      "lighting"
+                    ],
+                    "confidentlyDecreaseEnvironmentVariables": [
+                      "darkening"
+                    ],
+                    "canIncreaseEnvironmentVariables": [],
+                    "canDecreaseEnvironmentVariables": []
+                  },
+                  {
+                    "value": "Off",
+                    "hasPositiveEffectOnGoals": [
+                      {
+                        "goal": "energy saving",
+                        "description": "This device can consume a significant amount of energy"
+                      }
+                    ],
+                    "hasNegativeEffectOnGoals": [
+                      {
+                        "goal": "comfort",
+                        "description": "This device can make your daily tasks easier"
+                      },
+                      {
+                        "goal": "safety",
+                        "description": "This device can prevents accidents"
+                      }
+                    ],
+                    "confidentlyIncreaseEnvironmentVariables": [
+                      "darkening"
+                    ],
+                    "confidentlyDecreaseEnvironmentVariables": [
+                      "lighting"
+                    ],
+                    "canIncreaseEnvironmentVariables": [],
+                    "canDecreaseEnvironmentVariables": []
+                  }
+                ],
+                "canActivate": [
+                  {
+                    "trigger": "lightLevel",
+                    "why": "Increase or decrease of the room lighting"
+                  }
+                ]
+              },
+              {
+                "realName": "WindowSensor",
+                "possibleValues": [
+                  {
+                    "value": "Open",
+                    "hasPositiveEffectOnGoals": [
+                      {
+                        "goal": "safety",
+                        "description": "This window can prevents gas accumulation"
+                      },
+                      {
+                        "goal": "health",
+                        "description": "This window can improve air quality"
+                      },
+                      {
+                        "goal": "comfort",
+                        "description": "This window can regulates the internal temperature"
+                      },
+                      {
+                        "goal": "energy saving",
+                        "description": "This window can allow the temperature system to be switched off"
+                      }
+                    ],
+                    "hasNegativeEffectOnGoals": [
+                      {
+                        "goal": "well-being",
+                        "description": "This window can increases the noise from outside"
+                      },
+                      {
+                        "goal": "well-being",
+                        "description": "This window does not protect against weather events"
+                      },
+                      {
+                        "goal": "comfort",
+                        "description": "This window can make the room too cold or too hot"
+                      },
+                      {
+                        "goal": "security",
+                        "description": "This window can allows unauthorized access"
+                      },
+                      {
+                        "goal": "energy saving",
+                        "description": "This window can consume a significant amount of energy if temperature systems are on"
+                      }
+                    ],
+                    "confidentlyIncreaseEnvironmentVariables": [
+                      "air quality",
+                      "lighting"
+                    ],
+                    "confidentlyDecreaseEnvironmentVariables": [],
+                    "canIncreaseEnvironmentVariables": [
+                      "noise",
+                      "temperature",
+                      "air humidity"
+                    ],
+                    "canDecreaseEnvironmentVariables": [
+                      "quiet",
+                      "temperature",
+                      "air humidity"
+                    ]
+                  },
+                  {
+                    "value": "Close",
+                    "hasPositiveEffectOnGoals": [
+                      {
+                        "goal": "well-being",
+                        "description": "This window does not protect against weather events"
+                      },
+                      {
+                        "goal": "well-being",
+                        "description": "This window can increases the noise from outside"
+                      },
+                      {
+                        "goal": "comfort",
+                        "description": "This window can make a more stable internal temperature"
+                      },
+                      {
+                        "goal": "security",
+                        "description": "This window can allows unauthorized access"
+                      },
+                      {
+                        "goal": "energy saving",
+                        "description": "This window can consume a significant amount of energy if temperature systems are on"
+                      }
+                    ],
+                    "hasNegativeEffectOnGoals": [
+                      {
+                        "goal": "safety",
+                        "description": "This window can prevents gas accumulation"
+                      },
+                      {
+                        "goal": "health",
+                        "description": "This window can improve air quality"
+                      },
+                      {
+                        "goal": "comfort",
+                        "description": "This window can make the room too cold or too hot"
+                      }
+                    ],
+                    "confidentlyIncreaseEnvironmentVariables": [],
+                    "confidentlyDecreaseEnvironmentVariables": [
+                      "air quality"
+                    ],
+                    "canIncreaseEnvironmentVariables": [
+                      "quiet",
+                      "temperature",
+                      "air humidity"
+                    ],
+                    "canDecreaseEnvironmentVariables": [
+                      "noise",
+                      "temperature",
+                      "air humidity"
+                    ]
+                  }
+                ],
+                "canActivate": [
+                  {
+                    "trigger": "temperature",
+                    "why": "Increase or decrease of the room temperature"
+                  },
+                  {
+                    "trigger": "humidity",
+                    "why": "Increase or decrease of the room humidity"
+                  },
+                  {
+                    "trigger": "noiseLevel",
+                    "why": "Increase or decrease of the noise level"
+                  },
+                  {
+                    "trigger": "securityIntrusion",
+                    "why": "Open window can allow unauthorized access"
+                  }
+                ]
+              },
+              {
+                "realName": "CoffeeMachine",
+                "possibleValues": [
+                  {
+                    "value": "On",
+                    "hasPositiveEffectOnGoals": [
+                      {
+                        "goal": "comfort",
+                        "description": "This device can make coffee effortlessly"
+                      }
+                    ],
+                    "hasNegativeEffectOnGoals": [
+                      {
+                        "goal": "energy saving",
+                        "description": "This device can consume a significant amount of energy"
+                      },
+                      {
+                        "goal": "well-being",
+                        "description": "This device can make noise"
+                      }
+                    ],
+                    "confidentlyIncreaseEnvironmentVariables": [],
+                    "confidentlyDecreaseEnvironmentVariables": [],
+                    "canIncreaseEnvironmentVariables": [
+                      "noise"
+                    ],
+                    "canDecreaseEnvironmentVariables": [
+                      "quiet"
+                    ]
+                  },
+                  {
+                    "value": "Off",
+                    "hasPositiveEffectOnGoals": [
+                      {
+                        "goal": "energy saving",
+                        "description": "This device can consume a significant amount of energy"
+                      },
+                      {
+                        "goal": "well-being",
+                        "description": "This device can make noise"
+                      }
+                    ],
+                    "hasNegativeEffectOnGoals": [],
+                    "confidentlyIncreaseEnvironmentVariables": [],
+                    "confidentlyDecreaseEnvironmentVariables": [],
+                    "canIncreaseEnvironmentVariables": [
+                      "quiet"
+                    ],
+                    "canDecreaseEnvironmentVariables": [
+                      "noise"
+                    ]
+                  }
+                ],
+                "canActivate": [
+                  {
+                    "trigger": "noiseLevel",
+                    "why": "Increase or decrease of the noise level"
+                  }
+                ]
+              },
+              {
+                "realName": "fridge",
+                "possibleValues": [
+                  {
+                    "value": "On",
+                    "hasPositiveEffectOnGoals": [
+                      {
+                        "goal": "safety",
+                        "description": "This device can prevents the growth of bacteria and food contamination"
+                      },
+                      {
+                        "goal": "comfort",
+                        "description": "This device can make preparing meals at home more comfortable and convenient"
+                      }
+                    ],
+                    "hasNegativeEffectOnGoals": [
+                      {
+                        "goal": "energy saving",
+                        "description": "This device can consume a significant amount of energy"
+                      },
+                      {
+                        "goal": "well-being",
+                        "description": "This device can make noise"
+                      }
+                    ],
+                    "confidentlyIncreaseEnvironmentVariables": [],
+                    "confidentlyDecreaseEnvironmentVariables": [],
+                    "canIncreaseEnvironmentVariables": [
+                      "noise"
+                    ],
+                    "canDecreaseEnvironmentVariables": [
+                      "quiet"
+                    ]
+                  },
+                  {
+                    "value": "Off",
+                    "hasPositiveEffectOnGoals": [
+                      {
+                        "goal": "energy saving",
+                        "description": "This device can consume a significant amount of energy"
+                      },
+                      {
+                        "goal": "well-being",
+                        "description": "This device can make noise"
+                      }
+                    ],
+                    "hasNegativeEffectOnGoals": [
+                      {
+                        "goal": "safety",
+                        "description": "This device can prevents the growth of bacteria and food contamination"
+                      },
+                      {
+                        "goal": "comfort",
+                        "description": "This device can make preparing meals at home more comfortable and convenient"
+                      }
+                    ],
+                    "confidentlyIncreaseEnvironmentVariables": [],
+                    "confidentlyDecreaseEnvironmentVariables": [],
+                    "canIncreaseEnvironmentVariables": [
+                      "quiet"
+                    ],
+                    "canDecreaseEnvironmentVariables": [
+                      "noise"
+                    ]
+                  }
+                ],
+                "canActivate": [
+                  {
+                    "trigger": "noiseLevel",
+                    "why": "Increase or decrease of the noise level"
+                  }
+                ]
+              },
+              {
+                "realName": "Microwave",
+                "possibleValues": [
+                  {
+                    "value": "On",
+                    "hasPositiveEffectOnGoals": [
+                      {
+                        "goal": "comfort",
+                        "description": "This device allows you to cook meals quickly"
+                      }
+                    ],
+                    "hasNegativeEffectOnGoals": [
+                      {
+                        "goal": "well-being",
+                        "description": "This device can make noise"
+                      },
+                      {
+                        "goal": "energy saving",
+                        "description": "This device can consume a significant amount of energy"
+                      }
+                    ],
+                    "confidentlyIncreaseEnvironmentVariables": [],
+                    "confidentlyDecreaseEnvironmentVariables": [],
+                    "canIncreaseEnvironmentVariables": [
+                      "noise"
+                    ],
+                    "canDecreaseEnvironmentVariables": [
+                      "quiet"
+                    ]
+                  },
+                  {
+                    "value": "Off",
+                    "hasPositiveEffectOnGoals": [
+                      {
+                        "goal": "well-being",
+                        "description": "This device can make noise"
+                      },
+                      {
+                        "goal": "energy saving",
+                        "description": "This device can consume a significant amount of energy"
+                      }
+                    ],
+                    "hasNegativeEffectOnGoals": [],
+                    "confidentlyIncreaseEnvironmentVariables": [],
+                    "confidentlyDecreaseEnvironmentVariables": [],
+                    "canIncreaseEnvironmentVariables": [
+                      "quiet"
+                    ],
+                    "canDecreaseEnvironmentVariables": [
+                      "noise"
+                    ]
+                  }
+                ],
+                "canActivate": [
+                  {
+                    "trigger": "noiseLevel",
+                    "why": "Increase or decrease of the noise level"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "realName": "LivingRoom",
+            "attributes": [
+              {
+                "realName": "Light",
+                "possibleValues": [
+                  {
+                    "value": "On",
+                    "hasPositiveEffectOnGoals": [
+                      {
+                        "goal": "comfort",
+                        "description": "This device makes a more comfortable environment"
+                      },
+                      {
+                        "goal": "comfort",
+                        "description": "This device can make your daily tasks easier"
+                      },
+                      {
+                        "goal": "safety",
+                        "description": "This device can prevents accidents"
+                      },
+                      {
+                        "goal": "security",
+                        "description": "This device can deters criminals"
+                      }
+                    ],
+                    "hasNegativeEffectOnGoals": [
+                      {
+                        "goal": "energy saving",
+                        "description": "This device can consume a significant amount of energy"
+                      },
+                      {
+                        "goal": "well being",
+                        "description": "This device can negatively affect sleep quality"
+                      }
+                    ],
+                    "confidentlyIncreaseEnvironmentVariables": [
+                      "lighting"
+                    ],
+                    "confidentlyDecreaseEnvironmentVariables": [
+                      "darkening"
+                    ],
+                    "canIncreaseEnvironmentVariables": [],
+                    "canDecreaseEnvironmentVariables": []
+                  },
+                  {
+                    "value": "Off",
+                    "hasPositiveEffectOnGoals": [
+                      {
+                        "goal": "energy saving",
+                        "description": "This device can consume a significant amount of energy"
+                      },
+                      {
+                        "goal": "well being",
+                        "description": "This device can negatively affect sleep quality"
+                      }
+                    ],
+                    "hasNegativeEffectOnGoals": [
+                      {
+                        "goal": "comfort",
+                        "description": "This device can make your daily tasks easier"
+                      },
+                      {
+                        "goal": "safety",
+                        "description": "This device can prevents accidents"
+                      }
+                    ],
+                    "confidentlyIncreaseEnvironmentVariables": [
+                      "darkening"
+                    ],
+                    "confidentlyDecreaseEnvironmentVariables": [
+                      "lighting"
+                    ],
+                    "canIncreaseEnvironmentVariables": [],
+                    "canDecreaseEnvironmentVariables": []
+                  }
+                ],
+                "canActivate": [
+                  {
+                    "trigger": "lightLevel",
+                    "why": "Increase or decrease of the room lighting"
+                  }
+                ]
+              },
+              {
+                "realName": "WindowSensor",
+                "possibleValues": [
+                  {
+                    "value": "Open",
+                    "hasPositiveEffectOnGoals": [
+                      {
+                        "goal": "safety",
+                        "description": "This window can prevents gas accumulation"
+                      },
+                      {
+                        "goal": "health",
+                        "description": "This window can improve air quality"
+                      },
+                      {
+                        "goal": "comfort",
+                        "description": "This window can regulates the internal temperature"
+                      },
+                      {
+                        "goal": "energy saving",
+                        "description": "This window can allow the temperature system to be switched off"
+                      }
+                    ],
+                    "hasNegativeEffectOnGoals": [
+                      {
+                        "goal": "well-being",
+                        "description": "This window can increases the noise from outside"
+                      },
+                      {
+                        "goal": "well-being",
+                        "description": "This window does not protect against weather events"
+                      },
+                      {
+                        "goal": "comfort",
+                        "description": "This window can make the room too cold or too hot"
+                      },
+                      {
+                        "goal": "security",
+                        "description": "This window can allows unauthorized access"
+                      },
+                      {
+                        "goal": "energy saving",
+                        "description": "This window can consume a significant amount of energy if temperature systems are on"
+                      }
+                    ],
+                    "confidentlyIncreaseEnvironmentVariables": [
+                      "air quality"
+                    ],
+                    "confidentlyDecreaseEnvironmentVariables": [],
+                    "canIncreaseEnvironmentVariables": [
+                      "noise",
+                      "temperature",
+                      "air humidity"
+                    ],
+                    "canDecreaseEnvironmentVariables": [
+                      "quiet",
+                      "temperature",
+                      "air humidity"
+                    ]
+                  },
+                  {
+                    "value": "Close",
+                    "hasPositiveEffectOnGoals": [
+                      {
+                        "goal": "well-being",
+                        "description": "This window does not protect against weather events"
+                      },
+                      {
+                        "goal": "well-being",
+                        "description": "This window can increases the noise from outside"
+                      },
+                      {
+                        "goal": "comfort",
+                        "description": "This window can make a more stable internal temperature"
+                      },
+                      {
+                        "goal": "security",
+                        "description": "This window can allows unauthorized access"
+                      },
+                      {
+                        "goal": "energy saving",
+                        "description": "This window can consume a significant amount of energy if temperature systems are on"
+                      }
+                    ],
+                    "hasNegativeEffectOnGoals": [
+                      {
+                        "goal": "safety",
+                        "description": "This window can prevents gas accumulation"
+                      },
+                      {
+                        "goal": "health",
+                        "description": "This window can improve air quality"
+                      },
+                      {
+                        "goal": "comfort",
+                        "description": "This window can make the room too cold or too hot"
+                      }
+                    ],
+                    "confidentlyIncreaseEnvironmentVariables": [],
+                    "confidentlyDecreaseEnvironmentVariables": [
+                      "air quality"
+                    ],
+                    "canIncreaseEnvironmentVariables": [
+                      "quiet",
+                      "temperature",
+                      "air humidity"
+                    ],
+                    "canDecreaseEnvironmentVariables": [
+                      "noise",
+                      "temperature",
+                      "air humidity"
+                    ]
+                  }
+                ],
+                "canActivate": [
+                  {
+                    "trigger": "windowSensor",
+                    "why": "Detects the opening or closing of windows in the house"
+                  },
+                  {
+                    "trigger": "temperature",
+                    "why": "Increase or decrease of the room temperature"
+                  },
+                  {
+                    "trigger": "humidity",
+                    "why": "Increase or decrease of the room humidity"
+                  },
+                  {
+                    "trigger": "noiseLevel",
+                    "why": "Increase or decrease of the noise level"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "realName": "Entrance",
+            "attributes": [
+              {
+                "realName": "Light",
+                "possibleValues": [
+                  {
+                    "value": "On",
+                    "hasPositiveEffectOnGoals": [
+                      {
+                        "goal": "comfort",
+                        "description": "This device makes a more comfortable environment"
+                      },
+                      {
+                        "goal": "comfort",
+                        "description": "This device can make your daily tasks easier"
+                      },
+                      {
+                        "goal": "safety",
+                        "description": "This device can prevents accidents"
+                      },
+                      {
+                        "goal": "security",
+                        "description": "This device can deters criminals"
+                      }
+                    ],
+                    "hasNegativeEffectOnGoals": [
+                      {
+                        "goal": "energy saving",
+                        "description": "This device can consume a significant amount of energy"
+                      }
+                    ],
+                    "confidentlyIncreaseEnvironmentVariables": [
+                      "lighting"
+                    ],
+                    "confidentlyDecreaseEnvironmentVariables": [
+                      "darkening"
+                    ],
+                    "canIncreaseEnvironmentVariables": [],
+                    "canDecreaseEnvironmentVariables": []
+                  },
+                  {
+                    "value": "Off",
+                    "hasPositiveEffectOnGoals": [
+                      {
+                        "goal": "energy saving",
+                        "description": "This device can consume a significant amount of energy"
+                      }
+                    ],
+                    "hasNegativeEffectOnGoals": [
+                      {
+                        "goal": "comfort",
+                        "description": "This device can make your daily tasks easier"
+                      },
+                      {
+                        "goal": "safety",
+                        "description": "This device can prevents accidents"
+                      }
+                    ],
+                    "confidentlyIncreaseEnvironmentVariables": [
+                      "darkening"
+                    ],
+                    "confidentlyDecreaseEnvironmentVariables": [
+                      "lighting"
+                    ],
+                    "canIncreaseEnvironmentVariables": [],
+                    "canDecreaseEnvironmentVariables": []
+                  }
+                ],
+                "canActivate": [
+                  {
+                    "trigger": "lightLevel",
+                    "why": "Increase or decrease of the room lighting"
+                  }
+                ]
+              },
+              {
+                "realName": "door",
+                "possibleValues": [
+                  {
+                    "value": "Open",
+                    "hasPositiveEffectOnGoals": [
+                      {
+                        "goal": "comfort",
+                        "description": "This devices allows you to enter into the house"
+                      }
+                    ],
+                    "hasNegativeEffectOnGoals": [
+                      {
+                        "goal": "security",
+                        "description": "This device can allows unauthorized access"
+                      },
+                      {
+                        "goal": "well-being",
+                        "description": "This device can increases the noise from outside"
+                      }
+                    ],
+                    "confidentlyIncreaseEnvironmentVariables": [
+                      "air quality"
+                    ],
+                    "confidentlyDecreaseEnvironmentVariables": [],
+                    "canIncreaseEnvironmentVariables": [
+                      "noise",
+                      "temperature",
+                      "air humidity"
+                    ],
+                    "canDecreaseEnvironmentVariables": [
+                      "quiet",
+                      "temperature",
+                      "air humidity"
+                    ]
+                  },
+                  {
+                    "value": "Close",
+                    "hasPositiveEffectOnGoals": [
+                      {
+                        "goal": "security",
+                        "description": "This device can allows unauthorized access"
+                      },
+                      {
+                        "goal": "well-being",
+                        "description": "This device can increases the noise from outside"
+                      }
+                    ],
+                    "hasNegativeEffectOnGoals": [
+                      {
+                        "goal": "comfort",
+                        "description": "This devices allows you to enter into the house"
+                      }
+                    ],
+                    "confidentlyIncreaseEnvironmentVariables": [],
+                    "confidentlyDecreaseEnvironmentVariables": [
+                      "air quality"
+                    ],
+                    "canIncreaseEnvironmentVariables": [
+                      "quiet",
+                      "temperature",
+                      "air humidity"
+                    ],
+                    "canDecreaseEnvironmentVariables": [
+                      "noise",
+                      "temperature",
+                      "air humidity"
+                    ]
+                  }
+                ],
+                "canActivate": [
+                  {
+                    "trigger": "temperature",
+                    "why": "Increase or decrease of the room temperature"
+                  },
+                  {
+                    "trigger": "humidity",
+                    "why": "Increase or decrease of the room humidity"
+                  },
+                  {
+                    "trigger": "noiseLevel",
+                    "why": "Increase or decrease of the noise level"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "realName": "Corridor",
+            "attributes": [
+              {
+                "realName": "Led Light Strip",
+                "possibleValues": [
+                  {
+                    "value": "On",
+                    "hasPositiveEffectOnGoals": [
+                      {
+                        "goal": "comfort",
+                        "description": "This device makes a more comfortable environment"
+                      },
+                      {
+                        "goal": "comfort",
+                        "description": "This device can make your daily tasks easier"
+                      },
+                      {
+                        "goal": "comfort",
+                        "description": "This device can be adjusted to create customized lighting"
+                      },
+                      {
+                        "goal": "safety",
+                        "description": "This device can prevents accidents"
+                      },
+                      {
+                        "goal": "security",
+                        "description": "This device can can deters criminals"
+                      }
+                    ],
+                    "hasNegativeEffectOnGoals": [
+                      {
+                        "goal": "energy saving",
+                        "description": "This device can consume a significant amount of energy"
+                      }
+                    ],
+                    "confidentlyIncreaseEnvironmentVariables": [
+                      "lighting"
+                    ],
+                    "confidentlyDecreaseEnvironmentVariables": [
+                      "darkening"
+                    ],
+                    "canIncreaseEnvironmentVariables": [],
+                    "canDecreaseEnvironmentVariables": []
+                  },
+                  {
+                    "value": "Off",
+                    "hasPositiveEffectOnGoals": [
+                      {
+                        "goal": "energy saving",
+                        "description": "This device can consume a significant amount of energy"
+                      }
+                    ],
+                    "hasNegativeEffectOnGoals": [
+                      {
+                        "goal": "comfort",
+                        "description": "This device can make your daily tasks easier"
+                      },
+                      {
+                        "goal": "safety",
+                        "description": "This device can prevents accidents"
+                      }
+                    ],
+                    "confidentlyIncreaseEnvironmentVariables": [
+                      "darkening"
+                    ],
+                    "confidentlyDecreaseEnvironmentVariables": [
+                      "lighting"
+                    ],
+                    "canIncreaseEnvironmentVariables": [],
+                    "canDecreaseEnvironmentVariables": []
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "realName": "Bedroom",
+            "attributes": [
+              {
+                "realName": "Light",
+                "possibleValues": [
+                  {
+                    "value": "On",
+                    "hasPositiveEffectOnGoals": [
+                      {
+                        "goal": "comfort",
+                        "description": "This device makes a more comfortable environment"
+                      },
+                      {
+                        "goal": "comfort",
+                        "description": "This device can make your daily tasks easier"
+                      },
+                      {
+                        "goal": "safety",
+                        "description": "This device can prevents accidents"
+                      },
+                      {
+                        "goal": "security",
+                        "description": "This device can deters criminals"
+                      }
+                    ],
+                    "hasNegativeEffectOnGoals": [
+                      {
+                        "goal": "energy saving",
+                        "description": "This device can consume a significant amount of energy"
+                      },
+                      {
+                        "goal": "well being",
+                        "description": "This device can negatively affect sleep quality"
+                      }
+                    ],
+                    "confidentlyIncreaseEnvironmentVariables": [
+                      "lighting"
+                    ],
+                    "confidentlyDecreaseEnvironmentVariables": [
+                      "darkening"
+                    ],
+                    "canIncreaseEnvironmentVariables": [],
+                    "canDecreaseEnvironmentVariables": []
+                  },
+                  {
+                    "value": "Off",
+                    "hasPositiveEffectOnGoals": [
+                      {
+                        "goal": "well being",
+                        "description": "This device can negatively affect sleep quality"
+                      },
+                      {
+                        "goal": "energy saving",
+                        "description": "This device can consume a significant amount of energy"
+                      }
+                    ],
+                    "hasNegativeEffectOnGoals": [
+                      {
+                        "goal": "comfort",
+                        "description": "This device can make your daily tasks easier"
+                      },
+                      {
+                        "goal": "safety",
+                        "description": "This device can prevents accidents"
+                      }
+                    ],
+                    "confidentlyIncreaseEnvironmentVariables": [
+                      "darkening"
+                    ],
+                    "confidentlyDecreaseEnvironmentVariables": [
+                      "lighting"
+                    ],
+                    "canIncreaseEnvironmentVariables": [],
+                    "canDecreaseEnvironmentVariables": []
+                  }
+                ],
+                "canActivate": [
+                  {
+                    "trigger": "lightLevel",
+                    "why": "Increase or decrease of the room lighting"
+                  }
+                ]
+              },
+              {
+                "realName": "WindowSensor",
+                "possibleValues": [
+                  {
+                    "value": "Open",
+                    "hasPositiveEffectOnGoals": [
+                      {
+                        "goal": "safety",
+                        "description": "This window can prevents gas accumulation"
+                      },
+                      {
+                        "goal": "health",
+                        "description": "This window can improve air quality"
+                      },
+                      {
+                        "goal": "comfort",
+                        "description": "This window can regulates the internal temperature"
+                      },
+                      {
+                        "goal": "energy saving",
+                        "description": "This window can allow the temperature system to be switched off"
+                      }
+                    ],
+                    "hasNegativeEffectOnGoals": [
+                      {
+                        "goal": "well-being",
+                        "description": "This window can increases the noise from outside"
+                      },
+                      {
+                        "goal": "well-being",
+                        "description": "This window does not protect against weather events"
+                      },
+                      {
+                        "goal": "comfort",
+                        "description": "This window can make the room too cold or too hot"
+                      },
+                      {
+                        "goal": "security",
+                        "description": "This window can allows unauthorized access"
+                      },
+                      {
+                        "goal": "energy saving",
+                        "description": "This window can consume a significant amount of energy if temperature systems are on"
+                      }
+                    ],
+                    "confidentlyIncreaseEnvironmentVariables": [
+                      "air quality"
+                    ],
+                    "confidentlyDecreaseEnvironmentVariables": [],
+                    "canIncreaseEnvironmentVariables": [
+                      "noise",
+                      "temperature",
+                      "air humidity"
+                    ],
+                    "canDecreaseEnvironmentVariables": [
+                      "quiet",
+                      "temperature",
+                      "air humidity"
+                    ]
+                  },
+                  {
+                    "value": "Close",
+                    "hasPositiveEffectOnGoals": [
+                      {
+                        "goal": "well-being",
+                        "description": "This window does not protect against weather events"
+                      },
+                      {
+                        "goal": "well-being",
+                        "description": "This window can increases the noise from outside"
+                      },
+                      {
+                        "goal": "comfort",
+                        "description": "This window can make a more stable internal temperature"
+                      },
+                      {
+                        "goal": "security",
+                        "description": "This window can allows unauthorized access"
+                      },
+                      {
+                        "goal": "energy saving",
+                        "description": "This window can consume a significant amount of energy if temperature systems are on"
+                      }
+                    ],
+                    "hasNegativeEffectOnGoals": [
+                      {
+                        "goal": "safety",
+                        "description": "This window can prevents gas accumulation"
+                      },
+                      {
+                        "goal": "health",
+                        "description": "This window can improve air quality"
+                      },
+                      {
+                        "goal": "comfort",
+                        "description": "This window can make the room too cold or too hot"
+                      }
+                    ],
+                    "confidentlyIncreaseEnvironmentVariables": [],
+                    "confidentlyDecreaseEnvironmentVariables": [
+                      "air quality"
+                    ],
+                    "canIncreaseEnvironmentVariables": [
+                      "quiet",
+                      "temperature",
+                      "air humidity"
+                    ],
+                    "canDecreaseEnvironmentVariables": [
+                      "noise",
+                      "temperature",
+                      "air humidity"
+                    ]
+                  }
+                ],
+                "canActivate": [
+                  {
+                    "trigger": "temperature",
+                    "why": "Increase or decrease of the room temperature"
+                  },
+                  {
+                    "trigger": "humidity",
+                    "why": "Increase or decrease of the room humidity"
+                  },
+                  {
+                    "trigger": "noiseLevel",
+                    "why": "Increase or decrease of the noise level"
+                  },
+                  {
+                    "trigger": "securityIntrusion",
+                    "why": "Open window can allow unauthorized access"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "realName": "Bathroom",
+            "attributes": [
+              {
+                "realName": "Light",
+                "possibleValues": [
+                  {
+                    "value": "On",
+                    "hasPositiveEffectOnGoals": [
+                      {
+                        "goal": "comfort",
+                        "description": "This device makes a more comfortable environment"
+                      },
+                      {
+                        "goal": "comfort",
+                        "description": "This device can make your daily tasks easier"
+                      },
+                      {
+                        "goal": "safety",
+                        "description": "This device can prevents accidents"
+                      },
+                      {
+                        "goal": "security",
+                        "description": "This device can deters criminals"
+                      }
+                    ],
+                    "hasNegativeEffectOnGoals": [
+                      {
+                        "goal": "energy saving",
+                        "description": "This device can consume a significant amount of energy"
+                      }
+                    ],
+                    "confidentlyIncreaseEnvironmentVariables": [
+                      "lighting"
+                    ],
+                    "confidentlyDecreaseEnvironmentVariables": [
+                      "darkening"
+                    ],
+                    "canIncreaseEnvironmentVariables": [],
+                    "canDecreaseEnvironmentVariables": []
+                  },
+                  {
+                    "value": "Off",
+                    "hasPositiveEffectOnGoals": [
+                      {
+                        "goal": "energy saving",
+                        "description": "This device can consume a significant amount of energy"
+                      }
+                    ],
+                    "hasNegativeEffectOnGoals": [
+                      {
+                        "goal": "comfort",
+                        "description": "This device can make your daily tasks easier"
+                      },
+                      {
+                        "goal": "safety",
+                        "description": "This device can prevents accidents"
+                      }
+                    ],
+                    "confidentlyIncreaseEnvironmentVariables": [
+                      "darkening"
+                    ],
+                    "confidentlyDecreaseEnvironmentVariables": [
+                      "lighting"
+                    ],
+                    "canIncreaseEnvironmentVariables": [],
+                    "canDecreaseEnvironmentVariables": []
+                  }
+                ],
+                "canActivate": [
+                  {
+                    "trigger": "lightLevel",
+                    "why": "Increase or decrease of the room lighting"
+                  }
+                ]
+              },
+              {
+                "realName": "WindowSensor",
+                "possibleValues": [
+                  {
+                    "value": "Open",
+                    "hasPositiveEffectOnGoals": [
+                      {
+                        "goal": "safety",
+                        "description": "This window can prevents gas accumulation"
+                      },
+                      {
+                        "goal": "health",
+                        "description": "This window can improve air quality"
+                      },
+                      {
+                        "goal": "comfort",
+                        "description": "This window can regulates the internal temperature"
+                      },
+                      {
+                        "goal": "energy saving",
+                        "description": "This window can allow the temperature system to be switched off"
+                      }
+                    ],
+                    "hasNegativeEffectOnGoals": [
+                      {
+                        "goal": "well-being",
+                        "description": "This window can increases the noise from outside"
+                      },
+                      {
+                        "goal": "well-being",
+                        "description": "This window does not protect against weather events"
+                      },
+                      {
+                        "goal": "comfort",
+                        "description": "This window can make the room too cold or too hot"
+                      },
+                      {
+                        "goal": "security",
+                        "description": "This window can allows unauthorized access"
+                      },
+                      {
+                        "goal": "energy saving",
+                        "description": "This window can consume a significant amount of energy if temperature systems are on"
+                      }
+                    ],
+                    "confidentlyIncreaseEnvironmentVariables": [
+                      "air quality"
+                    ],
+                    "confidentlyDecreaseEnvironmentVariables": [],
+                    "canIncreaseEnvironmentVariables": [
+                      "noise",
+                      "temperature",
+                      "air humidity"
+                    ],
+                    "canDecreaseEnvironmentVariables": [
+                      "quiet",
+                      "temperature",
+                      "air humidity"
+                    ]
+                  },
+                  {
+                    "value": "Close",
+                    "hasPositiveEffectOnGoals": [
+                      {
+                        "goal": "well-being",
+                        "description": "This window does not protect against weather events"
+                      },
+                      {
+                        "goal": "well-being",
+                        "description": "This window can increases the noise from outside"
+                      },
+                      {
+                        "goal": "comfort",
+                        "description": "This window can make a more stable internal temperature"
+                      },
+                      {
+                        "goal": "security",
+                        "description": "This window can allows unauthorized access"
+                      },
+                      {
+                        "goal": "energy saving",
+                        "description": "This window can consume a significant amount of energy if temperature systems are on"
+                      }
+                    ],
+                    "hasNegativeEffectOnGoals": [
+                      {
+                        "goal": "safety",
+                        "description": "This window can prevents gas accumulation"
+                      },
+                      {
+                        "goal": "health",
+                        "description": "This window can improve air quality"
+                      },
+                      {
+                        "goal": "comfort",
+                        "description": "This window can make the room too cold or too hot"
+                      }
+                    ],
+                    "confidentlyIncreaseEnvironmentVariables": [],
+                    "confidentlyDecreaseEnvironmentVariables": [
+                      "air quality"
+                    ],
+                    "canIncreaseEnvironmentVariables": [
+                      "quiet",
+                      "temperature",
+                      "air humidity"
+                    ],
+                    "canDecreaseEnvironmentVariables": [
+                      "noise",
+                      "temperature",
+                      "air humidity"
+                    ]
+                  }
+                ],
+                "canActivate": [
+                  {
+                    "trigger": "temperature",
+                    "why": "Increase or decrease of the room temperature"
+                  },
+                  {
+                    "trigger": "humidity",
+                    "why": "Increase or decrease of the room humidity"
+                  },
+                  {
+                    "trigger": "noiseLevel",
+                    "why": "Increase or decrease of the noise level"
+                  },
+                  {
+                    "trigger": "securityIntrusion",
+                    "why": "Open window can allow unauthorized access"
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "realName": "Devices",
+        "nodes": [
+          {
+            "realName": "TV",
+            "possibleValues": [
+              {
+                "value": "On",
+                "hasPositiveEffectOnGoals": [
+                  {
+                    "goal": "well-being",
+                    "description": "It can improve relaxation"
+                  }
+                ],
+                "hasNegativeEffectOnGoals": [
+                  {
+                    "goal": "energy saving",
+                    "description": "This device can consume a significant amount of energy"
+                  },
+                  {
+                    "goal": "well-being",
+                    "description": "This device can negatively affect sleep quality"
+                  },
+                  {
+                    "goal": "comfort",
+                    "description": "This device can make noise"
+                  }
+                ],
+                "confidentlyIncreaseEnvironmentVariables": [
+                  "lighting"
+                ],
+                "confidentlyDecreaseEnvironmentVariables": [
+                  "darkness"
+                ],
+                "canIncreaseEnvironmentVariables": [
+                  "noise"
+                ],
+                "canDecreaseEnvironmentVariables": []
+              },
+              {
+                "value": "Off",
+                "hasPositiveEffectOnGoals": [
+                  {
+                    "goal": "energy saving",
+                    "description": "This device can consume a significant amount of energy"
+                  },
+                  {
+                    "goal": "well-being",
+                    "description": "This device can negatively affect sleep quality"
+                  }
+                ],
+                "hasNegativeEffectOnGoals": [],
+                "confidentlyIncreaseEnvironmentVariables": [
+                  "darkness"
+                ],
+                "confidentlyDecreaseEnvironmentVariables": [
+                  "lighting"
+                ],
+                "canIncreaseEnvironmentVariables": [],
+                "canDecreaseEnvironmentVariables": []
+              }
+            ],
+            "canActivate": [
+              {
+                "trigger": "noiseLevel",
+                "why": "Increase or decrease of the noise level"
+              }
+            ]
+          },
+          {
+            "realName": "Smartphone",
+            "possibleValues": [
+              {
+                "value": "On",
+                "hasPositiveEffectOnGoals": [
+                  {
+                    "goal": "safety",
+                    "description": "It allows you to be tracked"
+                  }
+                ],
+                "hasNegativeEffectOnGoals": [
+                  {
+                    "goal": "well-being",
+                    "description": "This device can negatively affect sleep quality"
+                  }
+                ],
+                "confidentlyIncreaseEnvironmentVariables": [],
+                "confidentlyDecreaseEnvironmentVariables": [],
+                "canIncreaseEnvironmentVariables": [
+                  "noise"
+                ],
+                "canDecreaseEnvironmentVariables": []
+              },
+              {
+                "value": "Off",
+                "hasPositiveEffectOnGoals": [
+                  {
+                    "goal": "well-being",
+                    "description": "This device can negatively affect sleep quality"
+                  }
+                ],
+                "hasNegativeEffectOnGoals": [
+                  {
+                    "goal": "safety",
+                    "description": "allows you to be tracked"
+                  }
+                ],
+                "confidentlyIncreaseEnvironmentVariables": [],
+                "confidentlyDecreaseEnvironmentVariables": [],
+                "canIncreaseEnvironmentVariables": [],
+                "canDecreaseEnvironmentVariables": []
+              }
+            ],
+            "canActivate": [
+              {
+                "trigger": "noiseLevel",
+                "why": "Increase or decrease of the noise level"
+              }
+            ]
+          },
+          {
+            "realName": "PC",
+            "possibleValues": [
+              {
+                "value": "On",
+                "hasPositiveEffectOnGoals": [
+                  {
+                    "goal": "well-being",
+                    "description": "It can improve relaxation (non so se abbia senso, magari andrebbe messo come goal svago - leisure?"
+                  }
+                ],
+                "hasNegativeEffectOnGoals": [
+                  {
+                    "goal": "energy saving",
+                    "description": "This device can consume a significant amount of energy"
+                  },
+                  {
+                    "goal": "well-being",
+                    "description": "This device can negatively affect sleep quality"
+                  }
+                ],
+                "confidentlyIncreaseEnvironmentVariables": [
+                  "lighting"
+                ],
+                "confidentlyDecreaseEnvironmentVariables": [
+                  "darkness"
+                ],
+                "canIncreaseEnvironmentVariables": [
+                  "noise"
+                ],
+                "canDecreaseEnvironmentVariables": []
+              },
+              {
+                "value": "Off",
+                "hasPositiveEffectOnGoals": [
+                  {
+                    "goal": "energy saving",
+                    "description": "This device can consume a significant amount of energy"
+                  },
+                  {
+                    "goal": "well-being",
+                    "description": "This device can negatively affect sleep quality"
+                  }
+                ],
+                "hasNegativeEffectOnGoals": [],
+                "confidentlyIncreaseEnvironmentVariables": [
+                  "darkness"
+                ],
+                "confidentlyDecreaseEnvironmentVariables": [
+                  "lighting"
+                ],
+                "canIncreaseEnvironmentVariables": [],
+                "canDecreaseEnvironmentVariables": []
+              }
+            ],
+            "canActivate": [
+              {
+                "trigger": "noiseLevel",
+                "why": "Increase or decrease of the noise level"
+              }
+            ]
+          },
+          {
+            "realName": "Tablet",
+            "possibleValues": [
+              {
+                "value": "On",
+                "hasPositiveEffectOnGoals": [
+                  {
+                    "goal": "well-being",
+                    "description": "It can improve relaxation (non so se abbia senso, magari andrebbe messo come goal svago - leisure?"
+                  },
+                  {
+                    "goal": "comfort",
+                    "description": "This device is not noisy"
+                  }
+                ],
+                "hasNegativeEffectOnGoals": [
+                  {
+                    "goal": "well-being",
+                    "description": "This device can negatively affect sleep quality"
+                  }
+                ],
+                "confidentlyIncreaseEnvironmentVariables": [],
+                "confidentlyDecreaseEnvironmentVariables": [],
+                "canIncreaseEnvironmentVariables": [
+                  "noise",
+                  "lighting"
+                ],
+                "canDecreaseEnvironmentVariables": [
+                  "darkness"
+                ]
+              },
+              {
+                "value": "Off",
+                "hasPositiveEffectOnGoals": [
+                  {
+                    "goal": "well-being",
+                    "description": "This device can negatively affect sleep quality"
+                  }
+                ],
+                "hasNegativeEffectOnGoals": [],
+                "confidentlyIncreaseEnvironmentVariables": [],
+                "confidentlyDecreaseEnvironmentVariables": [],
+                "canIncreaseEnvironmentVariables": [],
+                "canDecreaseEnvironmentVariables": []
+              }
+            ],
+            "canActivate": [
+              {
+                "trigger": "noiseLevel",
+                "why": "Increase or decrease of the noise level"
+              }
+            ]
+          },
+          {
+            "realName": "Alexa Services",
+            "possibleValues": [
+              {
+                "value": "News",
+                "hasPositiveEffectOnGoals": [
+                  {
+                    "goal": "well-being",
+                    "description": "It can improve relaxation"
+                  }
+                ],
+                "hasNegativeEffectOnGoals": [
+                  {
+                    "goal": "energy saving",
+                    "description": "This device can consume energy even in standby mode"
+                  }
+                ],
+                "confidentlyIncreaseEnvironmentVariables": [
+                  "noise"
+                ],
+                "confidentlyDecreaseEnvironmentVariables": [],
+                "canIncreaseEnvironmentVariables": [],
+                "canDecreaseEnvironmentVariables": []
+              },
+              {
+                "value": "Weather",
+                "hasPositiveEffectOnGoals": [
+                  {
+                    "goal": "well-being",
+                    "description": "It help with the daily organization"
+                  }
+                ],
+                "hasNegativeEffectOnGoals": [
+                  {
+                    "goal": "energy saving",
+                    "description": "This device can consume energy even in standby mode"
+                  }
+                ],
+                "confidentlyIncreaseEnvironmentVariables": [
+                  "noise"
+                ],
+                "confidentlyDecreaseEnvironmentVariables": [],
+                "canIncreaseEnvironmentVariables": [],
+                "canDecreaseEnvironmentVariables": []
+              },
+              {
+                "value": "Music",
+                "hasPositiveEffectOnGoals": [
+                  {
+                    "goal": "well-being",
+                    "description": "It can improve relaxation (non so se abbia senso, magari andrebbe messo come goal svago - leisure?"
+                  }
+                ],
+                "hasNegativeEffectOnGoals": [
+                  {
+                    "goal": "energy saving",
+                    "description": "This device can consume energy even in standby mode"
+                  }
+                ],
+                "confidentlyIncreaseEnvironmentVariables": [
+                  "noise"
+                ],
+                "confidentlyDecreaseEnvironmentVariables": [],
+                "canIncreaseEnvironmentVariables": [],
+                "canDecreaseEnvironmentVariables": []
+              }
+            ],
+            "canActivate": [
+              {
+                "trigger": "noiseLevel",
+                "why": "Increase or decrease of the noise level"
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
